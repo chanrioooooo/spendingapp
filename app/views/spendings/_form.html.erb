@@ -1,0 +1,43 @@
+<%= form_with model: spending, local: true do |f|%>
+
+
+  <div class="field">
+    <%= f.label :place, "日付" %>          <span class="indispensable">*</span><br />
+    </div>
+
+    <div class='day__field'>
+      <%= raw sprintf(
+                  f.date_select(
+                    :useday,
+                    class:'select-birth',
+                    id:"birth-date",
+                    use_month_numbers: true,
+                    prompt:'--',
+                    start_year: 2022,
+                    end_year: (Time.now.year - 2),
+                    date_separator: '%s'),
+                  "<p> 年 </p>", "<p> 月 </p>") + "<p> 日 </p>" %>
+    </div>
+
+
+  <div class="field">
+    <%= f.label :place, "場所" %>
+          <span class="indispensable">*</span><br />
+
+      <input class="place" type="text" name="場所">
+  </div>
+
+  <div class="field">
+    <%= f.label :detail, "内容" %><br />
+          <input class="text" type="text" name="内容">
+  </div>
+
+        <div class="field">
+            <%= f.label :detail, "金額" %>          <span class="indispensable">*</span><br />
+          <%= f.text_field :money, class:"text" %>
+        </div>
+
+  <div class="actions">
+    <%= f.submit "保存する", class: :form__btn  %>
+  </div>
+<% end %>
